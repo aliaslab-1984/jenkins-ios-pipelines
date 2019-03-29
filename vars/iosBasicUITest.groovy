@@ -5,7 +5,7 @@ def call(Map config) {
     
 	checkOutAndLint(config)
 
-    stage ('Unit Test') {
+    stage ('Basic UI Test') {
         sh "bundle exec fastlane sdk_test"
         cobertura coberturaReportFile: coverageFilePath
     }
