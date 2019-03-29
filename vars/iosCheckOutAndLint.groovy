@@ -1,4 +1,4 @@
-def checkOutAndLint(Map config) {
+def call(Map config) {
 
   pipeline {
     def credentialsId = config.credentialsId

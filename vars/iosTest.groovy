@@ -3,7 +3,7 @@ def call(Map config) {
   pipeline {
     def coverageFilePath = config.coverageFilePath
     
-	checkOutAndLint(config)
+	iosCheckOutAndLint(config)
 
     stage ('Unit Test') {
         sh "bundle exec fastlane sdk_test"
