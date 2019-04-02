@@ -6,8 +6,8 @@ def call(Map config) {
     iosCheckOutAndLint(config)
 
     ansiColor {
-      stage ('Unit Test') {
-          sh "bundle exec fastlane sdk_test"
+      stage ('Basic UI Test') {
+          sh "bundle exec fastlane sdk_basic_ui_test"
           cobertura coberturaReportFile: coverageFilePath
       }
     }
