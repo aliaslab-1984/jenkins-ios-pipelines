@@ -15,18 +15,20 @@ def call(Map config) {
         git credentialsId: credentialsId, url: gitUri, branch: gitBranch
     }
 
-    stage ('Fetch Dependencies') {
-        sh "bundle exec fastlane bootstrap"
-    }
+    ansiColor {
+      stage ('Fetch Dependencies') {
+          sh "bundle exec fastlane bootstrap"
+      }
 
-    stage('Lint') {
-        sh "bundle exec fastlane sdk_lint"
-        recordIssues tool: swiftLint(pattern: lintReportPattern)
-    }
+      stage('Lint') {
+          sh "bundle exec fastlane sdk_lint"
+          recordIssues tool: swiftLint(pattern: lintReportPattern)
+      }
 
-    stage ('Unit Test') {
-        sh "bundle exec fastlane sdk_test"
-        cobertura coberturaReportFile: coverageFilePath
+      stage ('Unit Test') {
+          sh "bundle exec fastlane sdk_test"
+          cobertura coberturaReportFile: coverageFilePath
+      }
     }
   }
 }

@@ -14,12 +14,14 @@ def call(Map config) {
         git credentialsId: credentialsId, url: gitUri, branch: gitBranch
     }
 
-    stage ('Fetch Dependencies') {
-        sh "bundle exec fastlane bootstrap"
-    }
+    ansiColor {
+      stage ('Fetch Dependencies') {
+          sh "bundle exec fastlane bootstrap"
+      }
 
-    stage ('Deploy') {
-        sh "bundle exec fastlane build_deploy_framework config_name:${artifactoryPropertiesFile}"
+      stage ('Deploy') {
+          sh "bundle exec fastlane build_deploy_framework config_name:${artifactoryPropertiesFile}"
+      }
     }
   }
 }
