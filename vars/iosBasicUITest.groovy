@@ -1,7 +1,7 @@
 def call(Map config) {
 
   pipeline {
-    def coverageFilePath = config.coverageFilePath
+    def coverageFilePath = config.coverageFilePath ?: 'fastlane/cobertura_report.xml'
 
     iosCheckOutAndLint(config)
 
