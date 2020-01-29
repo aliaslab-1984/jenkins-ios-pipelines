@@ -9,7 +9,6 @@ def call(Map config) {
       stage ('Unit Test') {
           sh "bundle exec fastlane sdk_test"
           cobertura coberturaReportFile: coverageFilePath
-	  slackSend color: 'good', message: 'Message from Jenkins'
       }
     }
   }
