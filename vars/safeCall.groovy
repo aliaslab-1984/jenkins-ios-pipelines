@@ -3,8 +3,8 @@ def call(Closure closure) {
      slackSend color: '#ffff00', message: """
      ${env.JOB_NAME}
      Build: #${env.BUILD_NUMBER}
-     Status: Started
-     See: ${BUILD_URL}
+     Status: *Started*
+     See: <${BUILD_URL}|here>
      """;
 
      closure();
