@@ -1,4 +1,4 @@
-def safeCall(Closure closure) {
+def call(Closure closure) {
    try {
      slackSend color: '#ffff00', message: "${env.JOB_NAME} started";
      closure();
