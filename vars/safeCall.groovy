@@ -22,6 +22,7 @@ def call(Closure closure) {
      Build: #${env.BUILD_NUMBER}
      Status: *Failed*
      See: <${BUILD_URL}|here>
+     Additional Info: ${exc.message}
      """;
    }
 }
