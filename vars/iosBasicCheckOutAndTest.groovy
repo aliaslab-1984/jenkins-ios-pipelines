@@ -5,6 +5,7 @@ def call(Map config) {
     def gitUri = config.gitUri
     def gitBranch = config.gitBranch ?: 'master'
     def lintReportPattern = config.lintReportPattern ?: '**/swiftlint-results.xml'
+    def coverageFilePath = config.coverageFilePath ?: 'fastlane/cobertura_report.xml'
 
     if (gitUri == null || credentialsId == null) {
         throw new IllegalStateException('Missing configuration arguments')
