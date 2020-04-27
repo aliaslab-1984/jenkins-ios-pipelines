@@ -24,7 +24,7 @@ def call(Map config) {
         if (project_directory == null) {
           sh "bundle exec fastlane build_deploy_framework config_name:${artifactoryPropertiesFile}"
         } else {
-          sh "bundle exec fastlane build_deploy_framework config_name:${artifactoryPropertiesFile} sdk_project_directory:${project_directory}"
+          sh "bundle exec fastlane build_deploy_framework config_name:${artifactoryPropertiesFile} sdk_project_directory:\"${project_directory}\""
         }
       }
     }
