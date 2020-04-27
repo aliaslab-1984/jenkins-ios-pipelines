@@ -5,6 +5,7 @@ def call(Map config) {
     def gitUri = config.gitUri
     def artifactoryPropertiesFile = config.artifactoryPropertiesFile
     def gitBranch = config.gitBranch ?: 'master'
+    def sdk_project_directory = config.sdk_project_directory
 
     if (gitUri == null || credentialsId == null || artifactoryPropertiesFile == null) {
         throw new IllegalStateException('Missing configuration arguments')
@@ -20,7 +21,11 @@ def call(Map config) {
       }
 
       stage ('Deploy') {
+        if (sdk_project_directory == null) {
           sh "bundle exec fastlane build_deploy_framework config_name:${artifactoryPropertiesFile}"
+        } else {
+          sh "bundle exec fastlane build_deploy_framework config_name:${artifactoryPropertiesFile} sdk_project_directory:${sdk_project_directory}"
+        }
       }
     }
   }
