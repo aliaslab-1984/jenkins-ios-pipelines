@@ -17,11 +17,11 @@ def call(Map config) {
 
     ansiColor {
       stage ('Fetch Dependencies') {
-          sh "fastlane sdk_bootstrap"
+          sh "bundle exec fastlane sdk_bootstrap"
       }
       
       stage ('Unit Test') {
-          sh "fastlane sdk_test"
+          sh "bundle exec fastlane sdk_test"
       }
       
       stage ('Coverage') {
