@@ -9,6 +9,8 @@ def call(Map config) {
     if (gitUri == null || credentialsId == null) {
         throw new IllegalStateException('Missing configuration arguments')
     }
+    
+    sh "bundle install"
 
     stage ('Checkout') {
         git credentialsId: credentialsId, url: gitUri, branch: gitBranch
