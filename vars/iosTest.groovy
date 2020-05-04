@@ -8,6 +8,9 @@ def call(Map config) {
     ansiColor {
       stage ('Unit Test') {
           sh "bundle exec fastlane sdk_test"
+      }
+      
+      stage ('Coverage') {
           cobertura coberturaReportFile: coverageFilePath
       }
     }
