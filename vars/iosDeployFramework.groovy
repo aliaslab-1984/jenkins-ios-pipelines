@@ -3,11 +3,11 @@ def call(Map config) {
   pipeline {
     def credentialsId = config.credentialsId
     def gitUri = config.gitUri
-    def artifactoryPropertiesFile = config.artifactoryPropertiesFile
     def gitBranch = config.gitBranch ?: 'master'
     def project_directory = config.sdk_project_directory
+    def type = config.type
 
-    if (gitUri == null || credentialsId == null || artifactoryPropertiesFile == null) {
+    if (gitUri == null || credentialsId == null) {
         throw new IllegalStateException('Missing configuration arguments')
     }
 
@@ -20,12 +20,24 @@ def call(Map config) {
           sh "bundle exec fastlane sdk_bootstrap"
       }
 
+      stage ('Build') {
+            if (type == null || type == "device") {
+                sh "bundle exec fastlane build_device_framework"
+            } else if (type == "universal") {
+                sh "bundle exec fastlane build_universal_framework"
+            } else if (type == "xc") {
+                sh "bundle exec fastlane build_xcframework"
+            }
+      }
+
       stage ('Deploy') {
-        if (project_directory == null) {
-          sh "bundle exec fastlane build_deploy_framework config_name:${artifactoryPropertiesFile} skip_archive:false"
-        } else {
-          sh "bundle exec fastlane build_deploy_framework config_name:${artifactoryPropertiesFile} sdk_project_directory:\"${project_directory}\" skip_archive:true"
-        }
+          if (type == null || type == "device") {
+              sh "bundle exec fastlane deploy_device_framework"
+          } else if (type == "universal") {
+              sh "bundle exec fastlane deploy_universal_framework"
+          } else if (type == "xc") {
+              sh "bundle exec fastlane deploy_xcframework"
+          }
       }
     }
   }
