@@ -4,8 +4,8 @@ def call(Map config) {
     def credentialsId = config.credentialsId
     def gitUri = config.gitUri
     def gitBranch = config.gitBranch ?: 'master'
-    def project_directory = config.sdk_project_directory
     def type = config.type
+    def buildOnly = config.buildOnly
 
     if (gitUri == null || credentialsId == null) {
         throw new IllegalStateException('Missing configuration arguments')
@@ -28,6 +28,10 @@ def call(Map config) {
             } else if (type == "xc") {
                 sh "bundle exec fastlane build_xcframework"
             }
+      }
+
+      if (buildOnly) {
+          return
       }
 
       stage ('Deploy') {
