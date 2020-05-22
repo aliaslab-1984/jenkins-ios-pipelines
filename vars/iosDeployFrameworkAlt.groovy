@@ -23,9 +23,10 @@ def call(Map config) {
       stage ('Build') {
             if (type == null || type == "device") {
                 sh "bundle exec fastlane build_device_framework_alt"
+                sh "bundle exec fastlane check_framework_dev_alt"
             } else if (type == "universal") {
                 sh "bundle exec fastlane build_universal_framework_alt"
-                sh "bundle exec fastlane check_framework"
+                sh "bundle exec fastlane check_framework_univ"
             } else if (type == "xc") {
                 sh "bundle exec fastlane build_xcframework_alt"
             }
