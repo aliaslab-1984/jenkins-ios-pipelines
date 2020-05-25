@@ -26,7 +26,7 @@ def call(Map config) {
             } else if (type == "universal") {
                 sh "bundle exec fastlane build_check_universal_framework"
             } else if (type == "xc") {
-                sh "bundle exec fastlane build_xcframework"
+                sh "bundle exec fastlane build_check_xc_framework"
             }
       }
 
