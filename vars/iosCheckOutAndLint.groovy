@@ -20,10 +20,10 @@ def call(Map config) {
           sh "bundle exec fastlane sdk_bootstrap"
       }
 
-      stage('Lint') {
-          sh "bundle exec fastlane sdk_lint"
-          recordIssues tool: swiftLint(pattern: lintReportPattern)
-      }
+      //stage('Lint') {
+        //  sh "bundle exec fastlane sdk_lint"
+          //recordIssues tool: swiftLint(pattern: lintReportPattern)
+      //}
     }
   }
 }
