@@ -17,7 +17,7 @@ def call(Map config) {
 
     ansiColor {
       stage ('Fetch Dependencies') {
-          sh "bundle exec fastlane sdk_bootstrap"
+          sh "bundle exec fastlane ios sdk_bootstrap"
       }
 
       stage ('Build') {
