@@ -22,11 +22,11 @@ def call(Map config) {
 
       stage ('Build') {
             if (type == null || type == "device") {
-                sh "bundle exec fastlane build_check_device_framework"
+                sh "bundle exec fastlane ios build_check_device_framework"
             } else if (type == "universal") {
-                sh "bundle exec fastlane build_check_universal_framework"
+                sh "bundle exec fastlane ios build_check_universal_framework"
             } else if (type == "xc") {
-                sh "bundle exec fastlane build_check_xc_framework"
+                sh "bundle exec fastlane ios build_check_xc_framework"
             }
       }
 
@@ -36,11 +36,11 @@ def call(Map config) {
 
       stage ('Deploy') {
           if (type == null || type == "device") {
-              sh "bundle exec fastlane deploy_device_framework"
+              sh "bundle exec fastlane ios deploy_device_framework"
           } else if (type == "universal") {
-              sh "bundle exec fastlane deploy_universal_framework"
+              sh "bundle exec fastlane ios deploy_universal_framework"
           } else if (type == "xc") {
-              sh "bundle exec fastlane deploy_xcframework"
+              sh "bundle exec fastlane ios deploy_xcframework"
           }
       }
     }
