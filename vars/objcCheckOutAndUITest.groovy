@@ -20,7 +20,7 @@ def call(Map config) {
           sh "bundle exec fastlane sdk_bootstrap"
       }
       
-      stage ('Unit Test') {
+      stage ('UI Tests') {
           sh "bundle exec fastlane sdk_ui_test"
       }
       
