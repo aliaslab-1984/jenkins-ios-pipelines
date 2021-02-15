@@ -29,7 +29,7 @@ def call(Map config) {
       }
       
       stage ('Sonar') {
-          sh "./SmartOTPSDK/run-sonar-swift.sh -v"
+          sh "./run-sonar-swift.sh -v"
       }
         
     }
