@@ -29,8 +29,9 @@ def call(Map config) {
       }
       
       stage ('Sonar') {
-         withSonarQubeEnv {
-            sh './bin/sonar-scanner'
+        def scannerHome = tool 'Sonar iOS Docker';
+         withSonarQubeEnv("Trigger sonar iOS Docker") {
+           sh "${scannerHome}/bin/sonar-scanner"
          }
       }
         
