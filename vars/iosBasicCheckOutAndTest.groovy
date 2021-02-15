@@ -29,7 +29,9 @@ def call(Map config) {
       }
       
       stage ('Sonar') {
-          sh "sonar-runner"
+         withSonarEnvironment {
+            sh './gradlew sonarqube'
+         }
       }
         
     }
