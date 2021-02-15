@@ -13,6 +13,10 @@ def call(Map config) {
       stage ('Coverage') {
           cobertura coberturaReportFile: coverageFilePath
       }
+      
+      stage ('Sonar') {
+          sh "./run-sonar-swift.sh -v"
+      }
     }
   }
 }
