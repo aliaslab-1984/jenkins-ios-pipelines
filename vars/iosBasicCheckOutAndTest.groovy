@@ -31,7 +31,7 @@ def call(Map config) {
       stage ('Sonar') {
          def scannerHome = tool 'Sonar iOS Docker'
          withSonarQubeEnv("Trigger sonar iOS Docker") {
-           sh "./SmartOTPSDK/run-sonar-swift.sh"
+           sh "${scannerHome}/bin/sonar-scanner"
          }
       }
         
