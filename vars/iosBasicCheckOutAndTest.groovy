@@ -29,7 +29,7 @@ def call(Map config) {
       }
       
       stage ('Sonar Scanner') {
-         sh "bundle exec fastlane sonarCheck"
+         sh "bundle exec fastlane sonarAnalysis"
       }
         
     }
