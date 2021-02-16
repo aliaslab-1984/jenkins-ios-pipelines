@@ -30,7 +30,7 @@ def call(Map config) {
       
       stage ('Sonar') {
         withSonarQubeEnv() {
-          sh "Sonar iOS Scanner/bin/sonar-scanner"
+          sh "/Applications/SonarScanner/bin/sonar-scanner"
         }
       }
         
