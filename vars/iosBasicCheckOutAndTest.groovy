@@ -29,9 +29,7 @@ def call(Map config) {
       }
       
       stage ('Sonar') {
-        withSonarQubeEnv() {
-          sh "/Applications/SonarScanner/bin/sonar-scanner"
-        }
+         sh "/Applications/SonarScanner/bin/sonar-scanner"
       }
         
     }
