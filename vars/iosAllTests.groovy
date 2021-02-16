@@ -15,7 +15,7 @@ def call(Map config) {
       }
       
       stage ('Sonar') {
-          sh "./run-sonar-swift.sh -v"
+          sh "sonar-scanner"
       }
     }
   }
