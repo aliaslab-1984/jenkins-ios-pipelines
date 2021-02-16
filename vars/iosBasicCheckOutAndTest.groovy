@@ -29,9 +29,8 @@ def call(Map config) {
       }
       
       stage ('Sonar') {
-        def chosenInstance = "Sonar\ iOS\ Scanner"
         withSonarQubeEnv() {
-          sh "${chosenInstance}/bin/sonar-scanner"
+          sh "Sonar iOS Scanner/bin/sonar-scanner"
         }
       }
         
