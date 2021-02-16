@@ -29,7 +29,10 @@ def call(Map config) {
       }
       
       stage ('Sonar') {
-          sh "sonar-scanner"
+        def chosenInstance = tool "Sonar iOS Scanner"
+        withSonarQubeEnv() {
+          sh "${chosenInstance}/bin/sonar-scanner"
+        }
       }
         
     }
