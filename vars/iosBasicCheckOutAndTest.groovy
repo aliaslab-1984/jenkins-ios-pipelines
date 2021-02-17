@@ -28,8 +28,8 @@ def call(Map config) {
           cobertura coberturaReportFile: coverageFilePath
       }
       
-      stage ('Sonar Scanner') {
-         sh "bundle exec fastlane sonarAnalysis"
+      stage ('Sonar') {
+          sh "bundle exec fastlane sonar_analysis"
       }
         
     }
