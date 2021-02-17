@@ -24,7 +24,7 @@ def call(Map config) {
       }
       
       stage ('Sonar') {
-          sh "sonar-scanner"
+          sh "bundle exec fastlane sonar_analysis"
       }
     }
   }
