@@ -24,12 +24,12 @@ def call(Map config) {
           sh "bundle exec fastlane sdk_test"
       }
       
-      stage ('Coverage') {
-          cobertura coberturaReportFile: coverageFilePath
-      }
-      
       stage ('Sonar') {
           sh "bundle exec fastlane sonar_analysis"
+      }
+      
+      stage ('Coverage') {
+          cobertura coberturaReportFile: coverageFilePath
       }
         
     }
