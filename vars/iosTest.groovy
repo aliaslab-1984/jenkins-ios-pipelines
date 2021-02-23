@@ -11,16 +11,20 @@ def call(Map config) {
 
     ansiColor {
       
-      sh "echo before the unnit test"
+      sh "echo before the unit test"
       
       stage ('Unit Test') {
           sh "bundle exec fastlane sdk_test"
       }
       
-      sh "echo after the unnit test"
+      sh "echo after the unit test"
       
       stage ('Coverage') {
           cobertura coberturaReportFile: coverageFilePath
+      }
+      
+      stage ('Sonar') {
+          sh "bundle exec fastlane sonar_analysis"
       }
     }
   }
