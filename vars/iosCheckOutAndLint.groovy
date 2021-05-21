@@ -22,7 +22,7 @@ def call(Map config) {
 
       stage('Lint') {
           sh "bundle exec fastlane ios sdk_lint"
-          recordIssues tool: swiftLint(pattern: lintReportPattern)
+          //recordIssues tool: swiftLint(pattern: lintReportPattern)
       }
     }
   }
