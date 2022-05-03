@@ -12,7 +12,7 @@ def call(Map config) {
 
     stage ('Checkout') {
         git credentialsId: credentialsId, url: gitUri, branch: gitBranch
-        sh "bundle install"
+        sh "bundle update"
     }
 
     ansiColor {
